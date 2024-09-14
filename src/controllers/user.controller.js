@@ -1,6 +1,6 @@
 import expressAsyncHandler from "express-async-handler";
-import * as bcrypt from "bcryptjs";
-import * as jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 import User from "../models/user.model.js";
 
@@ -15,11 +15,9 @@ export const registerUser = expressAsyncHandler(async (req, res) => {
 	});
 
 	if (newUser) {
-		const token = await jwt.sign(
-			{ userId: newUser._id },
-			process.env.JWT_SECRET,
-			{ expiresIn: "1h" }
-		);
+		const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
+			expiresIn: "1h",
+		});
 
 		res.json({ token, newUser });
 	}
