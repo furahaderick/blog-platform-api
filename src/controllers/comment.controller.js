@@ -55,7 +55,7 @@ export const updateComment = expressAsyncHandler(async (req, res) => {
 export const deleteComment = expressAsyncHandler(async (req, res) => {
 	const id = req.params.id;
 	try {
-		const comment = await Comment.findById(comment);
+		const comment = await Comment.findById(id);
 		if (!comment) {
 			return res.status(404).json({ message: "Comment not found" });
 		}
