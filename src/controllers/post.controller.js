@@ -47,7 +47,7 @@ export const fetchSingleBlogPost = expressAsyncHandler(async (req, res) => {
 export const updatePost = expressAsyncHandler(async (req, res) => {
 	const id = req.params.id;
 	try {
-		const blogPost = await BlogPost.findOne(id);
+		const blogPost = await BlogPost.findById(id);
 		if (!blogPost) {
 			return res.status(404).json({ message: "Post not found" });
 		}
