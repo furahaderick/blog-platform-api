@@ -1,4 +1,4 @@
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 function authenticateUser(req, res, next) {
 	const header = req.headers.authorization;
@@ -18,3 +18,5 @@ function authenticateUser(req, res, next) {
 		res.status(400).json({ message: "Invalid token" });
 	}
 }
+
+export default authenticateUser;
