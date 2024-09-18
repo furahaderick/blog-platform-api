@@ -5,6 +5,7 @@ import userRouter from "./routers/user.router.js";
 import postRouter from "./routers/post.router.js";
 import commentRouter from "./routers/comment.router.js";
 import APILimiter from "./middleware/limit.middleware.js";
+import logger from "./middleware/logs.middleware.js";
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -13,6 +14,7 @@ startDB();
 
 app.use(express.json());
 app.use(APILimiter);
+app.use(logger);
 
 app.use("/api/users", userRouter);
 app.use("/api/posts", postRouter);
